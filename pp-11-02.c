@@ -1,3 +1,5 @@
+// 20/02/29 = Sat
+
 /* gcc -o hex2dd -Wall -Wextra -ansi -pedantic pp-11-02.c */
 
 /* ----- Practice Problem 11.2 -----------------------------------------------
