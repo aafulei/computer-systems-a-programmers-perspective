@@ -21,24 +21,26 @@
 
 int main(int argc, char **argv)
 {
-    struct addrinfo *p, *listp, hints = { .ai_family = AF_INET, .ai_socktype = SOCK_STREAM };
-    char buf[MAXLINE];
-    int rc;
-
     if (argc != 2) {
-        fprintf(stderr, "usage: %s <domain name>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <domain name>\n", argv[0]);
         return 0;
     }
+    // get a linked list of addrinfo structs
+    struct addrinfo *listp, hints = { .ai_family = AF_INET, .ai_socktype = SOCK_STREAM };
+    int rc;
     if ((rc = getaddrinfo(argv[1], NULL, &hints, &listp)) != 0) {
         fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(rc));
-        exit(1);
+        return 1;
     }
-    for (p = listp; p; p = p->ai_next) {
+    // walk the list and print IP addresses
+    char buf[MAXLINE];
+    for (struct addrinfo *p = listp; p; p = p->ai_next) {
         if (inet_ntop(AF_INET, &((struct sockaddr_in *)p->ai_addr)->sin_addr, buf, MAXLINE) != NULL)
             printf("%s\n", buf);
         else
             fprintf(stderr, "inet_ntop error: %s\n", strerror(errno));
     }
+    // free the list
     freeaddrinfo(listp);
-    exit(0);
+    return 0;
 }
