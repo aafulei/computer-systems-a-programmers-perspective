@@ -1,6 +1,20 @@
+21/06/17 = Thu
+
 Practice Problem 11.1
 
 Complete the following table:
+
+Hex address       Dotted-decimal address
+----------------------------------------
+0x0               _______________
+0xffffffff        _______________
+0x7f000001        _______________
+__________        205.188.160.121
+__________        64.12.149.13
+__________        205.188.146.23
+
+
+Answer:
 
 Hex address       Dotted-decimal address
 ----------------------------------------
@@ -11,7 +25,7 @@ Hex address       Dotted-decimal address
 (0x400c950d)      64.12.149.13
 (0xcdbc9217)      205.188.146.23
 
-Step:
+Steps:
 
 205 = 12 * 16 + 13 = 0xcd
 188 = 11 * 16 + 12 = 0xbc
