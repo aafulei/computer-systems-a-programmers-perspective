@@ -1,4 +1,4 @@
-My solutions to the problems in the book "Computer Systems: A Programmer's Perspective" (3rd edition, 2016) by Randal E. Bryant and David R. O'Hallaron.
+My solutions to the problems in the book "Computer Systems: A Programmer's Perspective, Third Edition" (2016) by Randal E. Bryant and David R. O'Hallaron.
 
 1. A Tour of Computer Systems (0/2)
 2. Representing and Manipulating Information (0/97)
