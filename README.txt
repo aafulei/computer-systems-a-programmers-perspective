@@ -13,4 +13,4 @@ My solutions to the problems in the book "Computer Systems: A Programmer's Persp
 11. Network Programming (0/13)
 12. Concurrent Programming (0/39)
 
-And, my own implementation of the meat of the book.
+And, my reimplementation of the meat of the book.
