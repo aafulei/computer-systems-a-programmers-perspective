@@ -78,7 +78,7 @@ ssize_t iobuf_readn(iobuf_t *iob, void *dest, size_t n)
 // -----------
 // -1 read error
 //  0 end of file    (EOF)
-//  1 empty line     (just an '\n')
+//  1 empty line     (just an '\n' or "\r\n")
 //  2 completed line (a non-empty line that ends with '\n')
 //  3 oversized line (a line that does not end within lim characters)
 int iobuf_readline(iobuf_t *iob, void *dest, size_t lim)
@@ -99,7 +99,7 @@ int iobuf_readline(iobuf_t *iob, void *dest, size_t lim)
   *p = '\0';
   if (rc == 0)
     return 0;
-  else if (n == 0)
+  else if (n == 0 || (n == 1 && *(p-1) == '\r'))
     return 1;
   else if (c == '\n')
     return 2;
