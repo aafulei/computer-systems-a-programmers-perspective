@@ -12,3 +12,5 @@ My solutions to the problems in the book "Computer Systems: A Programmer's Persp
 10. System-Level I/O (10/10)
 11. Network Programming (0/13)
 12. Concurrent Programming (0/39)
+
+And, my own implementation of the meat of the book.
