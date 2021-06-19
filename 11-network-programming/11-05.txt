@@ -40,5 +40,4 @@ int main(void)
   exit(0);
 }
 
-Answer:
-
+Answer: Because the program uses only the output functions instead of interleaving the input and output functions defined in <stdio.h>.
