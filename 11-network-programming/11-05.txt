@@ -40,4 +40,6 @@ int main(void)
   exit(0);
 }
 
-Answer: Because the program uses only the output functions instead of interleaving the input and output functions defined in <stdio.h>.
+Answer: Because the program uses only the output functions (i.e. printf,
+fflush) instead of interleaving the input and output functions defined in
+<stdio.h>.
