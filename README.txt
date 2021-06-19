@@ -10,7 +10,7 @@ My solutions to the problems in the book "Computer Systems: A Programmer's Persp
 8. Exceptional Control Flow (0/26)
 9. Virtual Memory (0/20)
 10. System-Level I/O (10/10)
-11. Network Programming (0/13)
+11. Network Programming (5/13)
 12. Concurrent Programming (0/39)
 
 And my own implementation of the meat of the book.
