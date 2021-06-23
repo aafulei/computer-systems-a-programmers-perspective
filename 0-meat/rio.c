@@ -1,14 +1,11 @@
 #include "rio.h"
 
-void inbuf_init(struct inbuf *ib, int fd, unsigned maxtries, unsigned sleep_ms)
+void inbuf_init(struct inbuf *ib, int fd)
 {
 
   ib->fd = fd;
   ib->size = 0;
   ib->next = ib->buf;
-  ib->ntries = 0;
-  ib->maxtries = maxtries;
-  ib->sleep_ms = sleep_ms;
 }
 
 static ssize_t inbuf_read(struct inbuf *ib, void *dest, size_t n)
@@ -18,14 +15,6 @@ static ssize_t inbuf_read(struct inbuf *ib, void *dest, size_t n)
     if (rc == -1) {
       if (errno == EINTR)
         continue;
-      else if (errno == EAGAIN) {
-        if (ib->ntries++ < ib->maxtries) {
-          usleep(ib->sleep_ms * 1000);
-          continue;
-        }
-        else
-          return -1;
-      }
       else
         return -1;
     }
