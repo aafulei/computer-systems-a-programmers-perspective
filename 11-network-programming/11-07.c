@@ -1,12 +1,12 @@
+// unfinished
+
 // 21/06/23 = Wed
 
 // gcc 11-07.c csapp.c && ./a.out 1234
 
 /* ----- Homework Problem 11.7 ------------------------------------------------
-
-Extend Tiny so that it serves MPG video files. Check your work using a real
-browser.
-
+ * Extend Tiny so that it serves MPG video files. Check your work using a real
+ * browser.
  * ------------------------------------------------------------------------- */
 
 /* $begin tinymain */
@@ -194,8 +194,8 @@ void serve_static(int fd, char *filename, int filesize)
     sprintf(buf, "Content-type: text/html\r\n\r\n");
     Rio_writen(fd, buf, strlen(buf));
 
-
-  sprintf(buf, "<video>  <source src=\"sample.mpg\" type=\"video/mpeg\"> Your browser does not support the video tag. </video>\r\n");
+    sprintf(buf, "<video>  <source src=\"sample.mpg\" type=\"video/mpeg\"> "
+                 "Your browser does not support the video tag. </video>\r\n");
     Rio_writen(fd, buf, strlen(buf));
   }
 }
