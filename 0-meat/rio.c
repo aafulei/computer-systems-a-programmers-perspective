@@ -1,38 +1,61 @@
 #include <errno.h>
-#include <stddef.h>
 #include <string.h>
-
-#include <sys/types.h>
 #include <unistd.h>
 
 #define BUFSIZE 8192
 
-typedef struct
+struct inbuf
 {
   int fd;
-  int size;
+  size_t size;
   char *next;
   char buf[BUFSIZE];
-} iobuf_t;
+  unsigned ntries;
+  // -1 for de facto forever
+  // 0 for no wait
+  unsigned maxtries;
+  unsigned sleep_ms;
+};
+
+void inbuf_init(struct inbuf *ib,
+                int fd,
+                unsigned maxtries,
+                unsigned sleep_ms);
+ssize_t inbuf_readn(struct inbuf *ib, void *dest, size_t n);
+int inbuf_readline(struct inbuf *ib, void *dest, size_t lim);
+ssize_t nobuf_readn(int fd, void *dest, size_t n);
+ssize_t nobuf_writen(int fd, const void *src, size_t n);
 
 // POSIX system calls
 ssize_t read(int fd, void *dest, size_t size);
 ssize_t write(int fd, const void *src, size_t size);
 
-void iobuf_init(iobuf_t *iob, int fd)
+void inbuf_init(struct inbuf *ib, int fd, unsigned maxtries, unsigned sleep_ms)
 {
-  iob->fd = fd;
-  iob->size = 0;
-  iob->next = iob->buf;
+
+  ib->fd = fd;
+  ib->size = 0;
+  ib->next = ib->buf;
+  ib->ntries = 0;
+  ib->maxtries = maxtries;
+  ib->sleep_ms = sleep_ms;
 }
 
-static ssize_t iobuf_read(iobuf_t *iob, void *dest, size_t n)
+static ssize_t inbuf_read(struct inbuf *ib, void *dest, size_t n)
 {
-  while (iob->size == 0) {
-    int rc = read(iob->fd, iob->buf, sizeof(iob->buf));
+  while (ib->size == 0) {
+    int rc = read(ib->fd, ib->buf, sizeof(ib->buf));
     if (rc == -1) {
       if (errno == EINTR)
         continue;
+      else if (errno == EAGAIN) {
+        if (ib->ntries++ < ib->maxtries) {
+          usleep(ib->sleep_ms * 1000);
+          continue;
+        }
+        else
+          return -1;
+      }
       else
         return -1;
     }
@@ -40,24 +63,24 @@ static ssize_t iobuf_read(iobuf_t *iob, void *dest, size_t n)
       return 0;
     }
     else {
-      iob->size = rc;
-      iob->next = iob->buf;
+      ib->size = rc;
+      ib->next = ib->buf;
     }
   }
-  if (iob->size < n)
-    n = iob->size;
-  memcpy(dest, iob->next, n);
-  iob->next += n;
-  iob->size -= n;
+  if (ib->size < n)
+    n = ib->size;
+  memcpy(dest, ib->next, n);
+  ib->next += n;
+  ib->size -= n;
   return n;
 }
 
-ssize_t iobuf_readn(iobuf_t *iob, void *dest, size_t n)
+ssize_t inbuf_readn(struct inbuf *ib, void *dest, size_t n)
 {
   char *p = dest;
   size_t rest = n;
   while (rest != 0) {
-    int rc = iobuf_read(iob, p, rest);
+    int rc = inbuf_read(ib, p, rest);
     if (rc == -1)
       return -1;
     else if (rc == 0)
@@ -81,14 +104,14 @@ ssize_t iobuf_readn(iobuf_t *iob, void *dest, size_t n)
 //  1 empty line     (just an '\n' or "\r\n")
 //  2 completed line (a non-empty line that ends with '\n')
 //  3 oversized line (a line that does not end within lim characters)
-int iobuf_readline(iobuf_t *iob, void *dest, size_t lim)
+int inbuf_readline(struct inbuf *ib, void *dest, size_t lim)
 {
   char *p = dest;
   char c;
   size_t n;
   ssize_t rc;
   for (n = 0; n < lim; ++n) {
-    rc = iobuf_read(iob, &c, 1);
+    rc = inbuf_read(ib, &c, 1);
     if (rc == -1)
       return -1;
     else if (rc == 0 || c == '\n')
@@ -99,8 +122,12 @@ int iobuf_readline(iobuf_t *iob, void *dest, size_t lim)
   *p = '\0';
   if (rc == 0)
     return 0;
-  else if (n == 0 || (n == 1 && *(p-1) == '\r'))
+  else if (n == 0)
     return 1;
+  else if (n == 1 && *(p - 1) == '\r') {
+    *(p-1) = '\0';
+    return 1;
+  }
   else if (c == '\n')
     return 2;
   else
@@ -147,19 +174,4 @@ ssize_t nobuf_writen(int fd, const void *src, size_t n)
     }
   }
   return n;
-}
-
-#include <stdio.h>
-
-// echo
-int main()
-{
-  iobuf_t stdin_buf;
-  iobuf_init(&stdin_buf, 0);
-  char line[10 + 1];
-  int n;
-  while ((n = iobuf_readline(&stdin_buf, line, 10)) > 0) {
-    printf("%s\n", line);
-  }
-  return 0;
 }
