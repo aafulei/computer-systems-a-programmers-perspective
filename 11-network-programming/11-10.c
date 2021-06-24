@@ -1,6 +1,6 @@
 // gcc 11-10.c csapp.c && ./a.out 1234
 
-http://127.0.0.1:1234/cgi-bin/adder2?number1=14&number2=12
+// http://127.0.0.1:1234/cgi-bin/adder2?number1=14&number2=12
 
 /* ---- Homework Problem 11.10 (**) -------------------------------------------
  *
