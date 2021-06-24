@@ -16,7 +16,6 @@
 #include "csapp.h"
 
 void doit(int fd);
-void read_requesthdrs_headable(rio_t *rp, int head);
 void read_requesthdrs(rio_t *rp);
 int parse_uri(char *uri, char *filename, char *cgiargs);
 void serve_static(int fd, char *filename, int filesize, int head_only);
