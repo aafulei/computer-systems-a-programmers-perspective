@@ -1,0 +1,44 @@
+Practice Problem 2.10
+
+As an application of the property that a^a = 0 for any bit vector a, consider
+the following program:
+
+void inplace_swap(int *x, int *y)
+{
+  *y = *x ^ *y;   /* Step 1 */
+  *x = *x ^ *y;   /* Step 2 */
+  *y = *x ^ *y;   /* Step 3 */
+}
+
+...
+
+Fill in the blanks below.
+
+Step            *x        *y
+----------------------------
+Initially        a         b
+Step 1    ________  ________
+Step 2    ________  ________
+Step 3    ________  ________
+
+
+Answer: The steps below assume that x and y are different addresses.
+
+Step            *x        *y
+----------------------------
+Initially        a         b
+Step 1           a     a ^ b
+Step 2           b     a ^ b
+Step 3           b         a
+
+Steps:
+
+Note that both commutativity and associativity hold for XOR. That is,
+
+(i) a ^ b = b ^ a
+
+(ii) (a ^ b) ^ c = a ^ (b ^ c)
+
+For Step 2, *x value is a ^ (a ^ b) = (a ^ a) ^ b = 0 ^ b = b.
+
+For Step 3, *y value is (a ^ b) ^ b = a ^ (b ^ b) = a ^ 0 = a.

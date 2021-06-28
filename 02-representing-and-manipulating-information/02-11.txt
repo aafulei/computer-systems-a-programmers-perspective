@@ -1,0 +1,38 @@
+Practice Problem 2.11
+
+Armed with the function inplace_swap from Problem 2.10, you decide to write
+code that will reverse the elements of an array by swapping elements from
+opposite ends of the array, working towards the middle.
+
+void reverse_array(int a[], int cnt)
+{
+  int first, last;
+  for (first = 0, last = cnt - 1; first <= last; first++, last--)
+    inplace_swap(&a[first], &a[last]);
+}
+
+...
+
+You discover that the code always works correctly on arrays of even length, but
+it sets the middle element to 0 whenever the array has odd length.
+
+A. For an array of odd length cnt = 2k + 1, what are the values of variables
+   first and last in the final iteration of function reverse_array?
+
+B. Why does this call to function inplace_swap set the array element to 0?
+
+C. What simple modification to reverse_array() would eliminate this problem?
+
+
+Answer:
+
+A. Both first and last have value k, for an array of odd length 2k + 1.
+
+B. inplace_swap was applied on the same address.
+
+C. Change first <= last to first < last. But, in fact, the problem is from
+   inplace_swap(), and shouldn't be fixed by changing the calling function.
+   What should be done is to add a check in the inplace_swap() function body:
+
+    if (x == y)
+      return;

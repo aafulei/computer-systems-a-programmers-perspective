@@ -1,0 +1,26 @@
+Practice Problem 2.5
+
+Consider the following three calls to show_bytes:
+
+```c
+int val = Ox87654321;
+byte_pointer valp = (byte_pointer)&val;
+show_bytes(valp, 1);    /* A. */
+show_bytes(valp, 2);    /* B. */
+show_bytes(valp, 3);    /* C. */
+```
+
+Indicate the values that will be printed by each call on a little-endian
+machine and on a big-endian machine:
+
+A. Little endian: ________  Big endian: ________
+B. Little endian: ________  Big endian: ________
+C. Little endian: ________  Big endian: ________
+
+
+Answer:
+
+A. Little endian:       21  Big endian:       87
+B. Little endian:     2145  Big endian:     8765
+C. Little endian:   214365  Big endian:   876543
+

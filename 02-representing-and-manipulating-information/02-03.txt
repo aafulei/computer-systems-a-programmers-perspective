@@ -1,0 +1,36 @@
+Practice Problem 2.3
+
+A single byte can be represented by 2 hexadecimal digits. Fill in the missing
+entries in the following table, giving the decimal, binary, ahd hexadecimal
+values of different byte patterns:
+
+Decimal        Binary        Hexadecimal
+----------------------------------------
+      0     0000 0000               0x00
+    167     _________        ___________
+     62     _________        ___________
+    188     _________        ___________
+_______     0011 0111        ___________
+_______     1000 1000        ___________
+_______     1111 0011        ___________
+_______     _________               0x52
+_______     _________               0xAC
+_______     _________               0xE7
+
+
+Answer:
+
+Decimal        Binary        Hexadecimal
+----------------------------------------
+      0     0000 0000               0x00
+    167     1010 0111               0xA7
+     62     0011 1110               0x3E
+    188     1011 1100               0xBC
+     55     0011 0111               0x37
+    136     1000 1000               0x88
+    243     1111 0011               0xF3
+     82     1001 0010               0x52
+    172     1010 1100               0xAC
+    231     1110 0111               0xE7
+
+

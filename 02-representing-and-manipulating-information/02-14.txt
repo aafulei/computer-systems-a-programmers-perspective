@@ -1,0 +1,31 @@
+Practice Problem 2.14
+
+Suppose that x and y have byte values 0x66 and 0x39, respectively, Fill in the
+following table indicating the byte values of the different C expressions:
+
+Expression       Value          Expression       Value
+------------------------------------------------------
+x & y         ________          x && y        ________
+x | y         ________          x || y        ________
+~x | ~y       ________          !x || !y      ________
+x & !y        ________          x && ~y       ________
+
+
+Answer:
+
+Expression       Value          Expression       Value
+------------------------------------------------------
+x & y             0x20          x && y             0x1
+x | y             0x7f          x || y             0x1
+~x | ~y           0xdf          !x || !y           0x0
+x & !y             0x0          x && ~y            0x1
+
+Steps:
+
+x = 0x 66 = 0b 0110 0110
+y = 0x 39 = 0b 0011 1001
+
+x & y = 0b 0010 0000 = 0x20
+x | y = 0b 0111 1111 = 0x7f
+~x | ~y = ~(x & y) = 0b 1101 1111 = 0xdf
+x & !y = 0
