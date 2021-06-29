@@ -1,6 +1,6 @@
-/* Homework Problem 2.55  Compile and run the sample code that uses show_bytes
- * (file show-bytes.c) on different machines to which you have access.
- * Determine the byte orderings used by these machines. */
+/* Homework Problem 2.55 (*) Compile and run the sample code that uses
+ * show_bytes (file show-bytes.c) on different machines to which you have
+ * access. Determine the byte orderings used by these machines. */
 
 // Compiled on a macOS, the byte ordering is little endian.
 // ----------

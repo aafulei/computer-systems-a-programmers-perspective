@@ -1,4 +1,4 @@
-/* Homework Problem 2.56  Try running the code for show_bytes for different
+/* Homework Problem 2.56 (*) Try running the code for show_bytes for different
  * sample values. */
 
 // Compiled on a macOS, the byte ordering is little endian.

@@ -1,4 +1,4 @@
-/* Homework Problem 2.57  Write procedures show_short, show_long, and
+/* Homework Problem 2.57 (*) Write procedures show_short, show_long, and
  * show_double that print the byte representations of C objects of types short,
  * long, and double, respectively. Try these out on several machines. */
 
