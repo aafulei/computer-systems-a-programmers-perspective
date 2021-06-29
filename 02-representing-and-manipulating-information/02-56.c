@@ -1,3 +1,5 @@
+// 21/06/29 = Tue
+
 /* Homework Problem 2.56 (*) Try running the code for show_bytes for different
  * sample values. */
 
