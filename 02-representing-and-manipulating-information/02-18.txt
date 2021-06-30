@@ -1,0 +1,23 @@
+Practice Problem 2.18
+
+(Disassembler) ... For the lines labeled A-I, convert the hexadecimal values
+(in 32-bit two's-complement form) shown to the right of the instruction names
+(sub, mov, and add) into their decimal equivalents:
+
+(Full listing omitted. Only related info is shown below ...)
+
+sub     $0x2e0,%rsp                   A.
+mov     -0x58(%rsp),%rax              B.
+add     0x28(%rdi),%rax               C.
+mov     %rax,-0x30(%rsp)              D.
+mov     0x78(%rsp),%rax               E.
+mov     %rax,0x88(%rdi)               F.
+mov     0x1f8(%rsp),%rax              G.
+add     0x8(%rsp),%rax
+mov     %rax,0xc0(%rsp)               H.
+mov     -0x48(%rsp,%rdx,8),%rax       I.
+
+Answer:
+
+A.  0x2e0 = 512 + 14 * 16 =  512 + 224 = 736
+B.  -0x56 = -(5 * 16 + 8) = -88
