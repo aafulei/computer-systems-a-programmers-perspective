@@ -10,6 +10,10 @@ C. [111011]
 Observe that the second and third bit vectors can be derived from the first by
 sign extension.
 
+Reference:
+
+B2T_w(x) = -x_{w-1} 2^{w-1} + sum_{i=0}^{w-2} x_i 2^i  (Equation 2.3)
+
 Answer:
 
 A. B2T([1011]) = -2^3 + 2^1 + 2^0 = -8 + 2 + 1 = -5
