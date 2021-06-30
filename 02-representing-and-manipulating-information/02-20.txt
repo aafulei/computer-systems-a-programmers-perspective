@@ -1,0 +1,10 @@
+Practice Problem 2.20
+
+Explain how Equation 2.5 applies to the entries in the table you generated when
+solving Problem 2.19.
+
+Reference: Equation 2.5 for x such that between [TMin_w, TMax_w]:
+
+T2U_w(x) = (x >= 0 ? x : x + 2^w)
+
+Answer: There's no need to "explain". It's so obvious.
