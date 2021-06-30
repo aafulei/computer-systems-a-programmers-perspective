@@ -9,8 +9,8 @@ x       T2U_4(x)
 -3
 -2
 -1
-0
-5
+ 0
+ 5
 
 Reference - Table for Problem 2.17
 
