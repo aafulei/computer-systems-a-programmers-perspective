@@ -1,0 +1,38 @@
+Practice Problem 2.23
+
+Consider the following C functions:
+
+int fun1(unsigned word)
+{
+  return (int)((word << 24) >> 24);
+}
+
+int fun2(unsigned word)
+{
+  return ((int)word << 24) >> 24;
+}
+
+Assume these are executed as a 32-bit program on a machine that uses two's-
+complement arithmetic. Assume also that right shifts of signed values are
+performed arithmetically, while right shifts of unsigned values are performed
+logically.
+
+A. Fill in the following table ...
+
+    w                fun1(w)                fun2(w)
+-------------------------------------------------------------
+0x00000076
+0x87654321
+0x000000c9
+0xedcba987
+
+B. Describe in words the useful computation each of these function performs.
+
+Answer:
+
+    w                fun1(w)                fun2(w)
+-------------------------------------------------------------
+0x00000076
+0x87654321
+0x000000c9
+0xedcba987
