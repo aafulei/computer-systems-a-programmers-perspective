@@ -1,0 +1,36 @@
+// 21/07/01 = Thu
+
+Practice Problem 2.24
+
+Suppose we truncate a 4-bit value (represented by hex digits 0 through F) to a
+3-bit value (represented by hex digits 0 through 7). Fill in the table below ..
+
+    Hex                           Unsigned                Two's Complement
+-------------------------------------------------------------------------------
+Original    Truncated       Original    Truncated      Original    Truncated
+-------------------------------------------------------------------------------
+    0           0               0                          0
+    2           2               2                          2
+    9           1               9                         -7
+    B           3              11                         -5
+    F           7              15                         -1
+
+Explain how Equations 2.9 and 2.10 apply to these cases.
+
+Reference: Equations 2.9 B2U(), 2.10 B2T() summarize the effect of truncation.
+
+Answer:
+
+    Hex                           Unsigned                Two's Complement
+-------------------------------------------------------------------------------
+Original    Truncated       Original    Truncated      Original    Truncated
+-------------------------------------------------------------------------------
+[0000] 0    [000]   0              0            0             0            0
+[0010] 2    [010]   2              2            2             2            2
+[1001] 9    [001]   1              9            1            -7            1
+[1011] B    [011]   3             11            3            -5            3
+[1111] F    [111]   7             15            7            -1           -1
+
+Equations 2.9 and 2.10 can be simply described as: drop the higher-order bits,
+and then interpret the truncated binary as proper (unsigned or two's-
+complement).
