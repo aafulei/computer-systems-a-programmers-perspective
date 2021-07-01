@@ -24,8 +24,7 @@ overflow. */
 
 int uadd_ok(unsigned x, unsigned y)
 {
-  unsigned z = x + y;
-  return z >=x && z >= y;
+  return x + y >= x;
 }
 
 void test(unsigned x, unsigned y)
