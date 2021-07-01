@@ -30,9 +30,19 @@ B. Describe in words the useful computation each of these function performs.
 
 Answer:
 
+(A)
+
     w                fun1(w)                fun2(w)
 -------------------------------------------------------------
-0x00000076
-0x87654321
-0x000000c9
-0xedcba987
+0x00000076           0x00000076             0x00000076
+0x87654321           0x00000021             0xffffff21
+0x000000c9           0x000000c9             0xffffffc9
+0xedcba987           0x00000087             0xffffff87
+
+(B)
+
+fun1() extracts the lowest-order byte of the argument. The result is an integer
+in [0, 256).
+
+fun2() extracts the lowest-order byte of the argument, but does the sign
+extension at the same time. The result is an integer in [-128, 128).
