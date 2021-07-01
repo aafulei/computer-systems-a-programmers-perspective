@@ -1,3 +1,5 @@
+// 21/07/01 = Thu
+
 Practice Problem 2.23
 
 Consider the following C functions:
@@ -23,8 +25,8 @@ A. Fill in the following table ...
 -------------------------------------------------------------
 0x00000076
 0x87654321
-0x000000c9
-0xedcba987
+0x000000C9
+0xEDCBA987
 
 B. Describe in words the useful computation each of these function performs.
 
@@ -35,9 +37,9 @@ Answer:
     w                fun1(w)                fun2(w)
 -------------------------------------------------------------
 0x00000076           0x00000076             0x00000076
-0x87654321           0x00000021             0xffffff21
-0x000000c9           0x000000c9             0xffffffc9
-0xedcba987           0x00000087             0xffffff87
+0x87654321           0x00000021             0xFFFFFF21
+0x000000C9           0x000000C9             0xFFFFFFC9
+0xEDCBA987           0x00000087             0xFFFFFF87
 
 (B)
 
