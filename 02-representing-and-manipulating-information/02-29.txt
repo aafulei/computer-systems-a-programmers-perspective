@@ -1,0 +1,36 @@
+Practice Problem 2.29
+
+Fill in the following table in the style of Figure 2.25 (for addition and
+two's-complement addition, given integer values of 5-bit arguments) ...
+
+    x         y         x+y         x+y_5^t         Case
+-----------------------------------------------------------------------
+
+[10100]   [10001]
+
+[11000]   [11000]
+
+[10111]   [01000]
+
+[00010]   [00101]
+
+[01100]   [00100]
+
+Answer:
+
+    x         y         x+y         x+y_5^t         Case
+-----------------------------------------------------------------------
+  -12       -15         -27           5           1 (negative overflow)
+[10100]   [10001]     [100101]     [00101]
+
+   -8        -8          -16         -16          2 (negative normal)
+[11000]   [11000]     [110000]     [10000]
+
+   -9         8          -1           -1          2 (negative normal)
+[10111]   [01000]     [111111]     [11111]
+
+    2         5           7            7          3 (positive normal)
+[00010]   [00101]     [000111]     [00111]
+
+   12         4          16          -16          4 (negative overflow)
+[01100]   [00100]     [010000]     [10000]
