@@ -1,9 +1,11 @@
+// 21/07/01 = Thu
+
 /* Practice Problem 2.25
 
 Consider the following code that attempts to sum the elements of an array a,
 where the number of elements is given by parameter length:
 
-// Warning: This is buggy code
+// WARNING: This is buggy code
 float sum_elements(float a[], unsigned length)
 {
   int i;
