@@ -1,0 +1,11 @@
+21/07/02 = Fri
+
+Practice Problem 2.41
+
+For a run of ones starting a bit position n down to bit position m (n >= m), we
+saw that we can gerneate two forms of code, A and B. How should the copmiler
+decide which form to use.
+
+Answer: Assuming addition and subtraction have the same cost, form B is always
+        beter than form A except when n == m, where form A is better, and when
+        n == m + 1, where two forms have the same cost.
