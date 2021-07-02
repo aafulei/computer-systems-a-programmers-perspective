@@ -1,0 +1,28 @@
+Practice Problem 2.34
+
+Fill in the following table showing the results of multiplying different 3-bit
+numbers, in the style of Figure 2.27:
+
+Mode                      x          y          x * y          Truncated x * y
+-------------------------------------------------------------------------------
+Unsigned                    [100]       [101]
+Two's complement            [100]       [101]
+
+Unsigned                    [010]       [111]
+Two's complement            [010]       [111]
+
+Unsigned                    [110]       [110]
+Two's complement            [110]       [110]
+
+Answer:
+
+Mode                      x          y          x * y          Truncated x * y
+-------------------------------------------------------------------------------
+Unsigned                 4  [100]    5  [101]   20 [10100]     4 [100]
+Two's complement        -4  [100]   -3  [101]   12 [01100]    -4 [100]
+
+Unsigned                 2  [010]    7  [111]   14 [01110]     6 [110]
+Two's complement         2  [010]   -1  [111]   -2 [11110]    -2 [110]
+
+Unsigned                 6  [110]    6  [110]   36 [10100]     6 [100]
+Two's complement        -2  [110]   -2  [110]    4 [00100]    -4 [100]
