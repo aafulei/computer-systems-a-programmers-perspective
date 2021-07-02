@@ -1,3 +1,5 @@
+// 21/07/02 = Fri
+
 /* Practice Problem 2.36
 
 For the case where data type int has 32 bits, devise a version of tmult_ok
