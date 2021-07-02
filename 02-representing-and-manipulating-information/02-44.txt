@@ -26,14 +26,21 @@ F. x + y == uy + ux
 G. x * ~y + uy * ux == -x
 
 Answer:
+
 A. False when x == INT_MIN (-2147483648).
+
 B. Always true. The 3 lowest-order bits have to be 111 in order to fail
    (x & 7) != 7. In such case (x << 29) is 0xe0000000, which is negative.
+
 C. False, for example (sqrt(INT_MAX) + 1, sqrt(INT_MAX) + 1) evaluates to
    a negative number.
+
 D. Always true. x has to be in [0, INT_MAX] to fail (x < 0), while the
    integers in [-INT_MAX, 0] always <= 0.
+
 E. False, undefined behavior when x == INT_MIN (can't take negation on it).
+
 F. Always true, two's-complement and unsigned addition have the same bit-
    level behavior.
+
 G. Always true. x * ~y + uy * ux = (int)(x * (-y - 1) + y * x) = -x
