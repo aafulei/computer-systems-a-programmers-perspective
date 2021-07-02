@@ -1,0 +1,14 @@
+21/07/02 = Fri
+
+Practice Problem 2.39
+
+How could we modify the expression for form B for the case where bit position n
+is the most significant bit?
+
+Reference - for the expression x * K for some constant K
+
+Form A: (x << n) + (x << (n - 1)) + ... + (x << m)
+Form B: (x << (n + 1)) - (x << m)
+
+Answer: In such case (x << (n + 1)) can be omitted and form B is simply
+        -(x << m).
