@@ -1,0 +1,66 @@
+21/07/20 = Fri
+
+Practice Problem 2.35
+
+You are given the assignment to develop code for a function tmult_ok that will
+determine whether two arguments can be multiplied without causing overflow.
+Here is your solution:
+
+// Determine whether arguments can be multiplied without overflow
+
+int tmult_ok(int x, int y)
+{
+  int p = x * y;
+  // Either x is zero, or dividing p by x gives y
+  return !x || p / x == y;
+}
+
+You test this code for a number of values of x and y, and it seems to work
+properly. Your coworker challenges you, saying, "If I can't use subtraction to
+test whether addition has overflowed (see Problem 2.31), then how can you use
+division to test whether multiplication has overflowed?"
+
+Devise a mathematical justification of your approach, along the following
+lines. First, argue that the case x = 0 is handled correctly. Otherwise,
+consider w-bit numbers x (x != 0), y, p, and q, where p is the result of
+performing two's-complement multiplication on x and y, and q is the result of
+dividing p by x.
+
+1. Show that x · y, the integer product of x and y, can be written in the form
+x · y = p + t 2^w, where t != 0 if and only if the computation of p overflows.
+
+2. Show that p can be written in the form p = x · q + r, where |r| < |x|.
+
+3. Show that q = y if and only if r = t = 0.
+
+Answer: First, if x == 0, then !x is 1 and (!x || p / x == y) evaluates to 1.
+        So the case x = 0 is handled correctly.
+
+1. Define (x # y) as the lower-order w bits of the 2w-bit integer product
+   x · y, where x and y are w-bit unsigned integers. Then Equation 2.16 says
+
+          (x # y) = (x · y) mod 2^w
+
+  In other words, (x · y) = (x # y) + t 2^w, where t is an integer.
+
+  Noting that int p = x * y is the C representation of (x # y), we have
+
+          (x · y) = p + t 2^w, where t is an integer.
+
+  By definition, overflow is when (x · y) != (x # y), or (x · y) != p. That is,
+
+          (x · y) = p + t 2^w, if and only when t != 0.
+
+2. Given any two integers p and x, there must be integers q and r, where
+   |r| < |x|, such that p = x · q + r. This is the quotient-remainder theorem.
+
+3. If q = y, then p = (x # y) = (x · y) + r, where |r| < |x|. Comparing this
+   with (x · y) = (x # y) + t 2^w, and |x| < 2^w, we find that the only values
+   of r and t such that
+
+          |t| 2^w = |r|
+
+   are r = t = 0.
+
+   On the other hand, if r = t = 0, then p = x · q and x · y = p, which tells
+   that y = p.
