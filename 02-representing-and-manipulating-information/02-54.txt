@@ -1,0 +1,59 @@
+21/07/03 = Sat
+
+Practice Problem 2.54
+
+Assume varialbes x, f, and d are of type int, float, and double, respectively.
+Their values are arbitrary, except that neither f or d equals +inf, -inf, or
+NaN. For each of the following C expressions, either argue that it will always
+be true (i.e. evaluates to 1) or give a value for the variables such that it
+is not true (i.e. evaluates to 0).
+
+A. x == (int)(double)x
+
+B. x == (int)(float)x
+
+C. d == (double)(float)d
+
+D. f == (float)(double)f
+
+E. f == -(-f)
+
+F. 1.0 / 2 == 1 / 2.0
+
+G. d * d >= 0.0
+
+H. (f + d) - f == d
+
+Answer:
+
+A. Always true. A double has 52 bits to store the fraction part, which is
+   enough to store all the int.
+
+B. Not necessarily true. A float has only 23 bits to store the fraction part,
+   whereas an int has 32 bits (31 bits for the values exclusing the sign). Let
+   x assume a large value, e.g. 2147483647, and there might be a loss of
+   precision.
+
+C. Not necessarily true. Converting a double to a float might cause a loss of
+   precision, or an overflow / underflow. For example, let d = FLT_MAX * 100.
+
+D. Always true. Converting a float to a double won't lead a loss of precision,
+   or an overflow / underflow.
+
+E. Always true. This is unlike int types. The floating-point representation are
+   symmetrical around the zero.
+
+F. Always true. Although 0.5 is not a number that can be perfectly represented
+   by a binary decimal, i.e. it must be approximated, both the left-hand side
+   and the right-hand side will be the same calculation between floating-point
+   numbers.
+
+G. Always true. In case of overflow, the result would be +inf, which is >= 0.
+
+H. Not necessarily true. Overflow/underflow might occur. For overflow, whenever
+   (f + d) reaches +/-inf, any further addition/subtraction with a non-infinity
+   number would still be the same +/-inf. For underflow, consider
+
+    (1e10 + 1.0) - 1e10
+
+  which might result 0.0 instead of 1.0.
