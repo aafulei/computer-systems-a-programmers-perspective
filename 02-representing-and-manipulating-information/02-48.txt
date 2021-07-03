@@ -24,7 +24,7 @@ Answer: Given the 0x00359141 as the hexadecimal representation, the binary
 
             M = 1.101011001000101000001, and
 
-            f = 0.10101100100010100000100 (23 bits after decimal point)
+            f = 0.10101100100010100000100 (23 bits after binary point)
 
         Meanwhile, we have E = 21, Bias = 2^(8-1) - 1 = 127, so
 
