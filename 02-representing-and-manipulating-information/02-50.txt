@@ -1,0 +1,19 @@
+21/07/03 = Sat
+
+Practice Problem 2.50
+
+Show how the following binary fraction values would be rounded to the nearest
+half (1 bit to the right of the binary point), according to the round-to-even
+rule. In each case, show the numeric values, both before and after rounding.
+
+A. 10.010 (binary decimal)
+B. 10.011 (binary decimal)
+C. 10.110 (binary decimal)
+D. 11.001 (binary decimal)
+
+Answer:     before  rounded-to-even   after    note
+---------------------------------------------------------------------------
+A.           2.25       10.0           2.0     halfway, prefer 10.0 to 10.1
+B.           2.375      10.1           2.5     not halfway, just round up
+C.           2.75       11.0           3.0     halfway, prefer 11.0 to 10.1
+D.           3.125      11.0           3.0     not halfway, just round down
