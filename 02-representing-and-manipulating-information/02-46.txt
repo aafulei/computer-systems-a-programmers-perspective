@@ -12,11 +12,14 @@ point:
 ...
 
 A. What is the binary representation of 0.1 - x?
+
 B. What is the approximate decimal value of 0.1 - x?
+
 C. The clock starts at 0 when the system is first powered up and keeps counting
    up from there. In this case, the system had been running for around 100
    hours. What was the difference between the actual time and the time computed
    by the software?
+
 D. The system predicts where an incoming missle will appear based on its
    velocity and the time of the last radar detection. Given that a Scud travels
    at around 2,000 meters per second, how far off was its prediction?
