@@ -1,0 +1,27 @@
+21/07/03 = Sat
+
+Practice Problem 2.45
+
+Fill in the missing information in the following table:
+
+Fractional value    Binary representation     Decimal representation
+--------------------------------------------------------------------
+      1/8                0.001                     0.125
+      3/4
+     25/16
+                        10.1011
+                         1.001
+                                                   5.875
+                                                   3.1875
+
+Answer:
+
+Fractional value    Binary representation     Decimal representation
+--------------------------------------------------------------------
+      1/8                0.0010                    0.125
+      3/4                0.1100                    0.76
+     25/16               1.1001                    1.5625
+     43/16              10.1011                    2.6875
+      9/8                1.0010                    1.125
+     47/8              101.1110                    5.875
+     51/16              11.0011                    3.1875
