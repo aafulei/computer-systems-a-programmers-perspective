@@ -44,6 +44,5 @@ int main()
   printf("NEG_INFINITY == -INFINITY ? %d\n", NEG_INFINITY == -INFINITY);
   printf("sign_bit(%.1lf) = %d\n", 0.0, sign_bit(0.0));
   printf("sign_bit(%.1lf) = %d\n", NEG_ZERO, sign_bit(NEG_ZERO));
-
   return 0;
 }
