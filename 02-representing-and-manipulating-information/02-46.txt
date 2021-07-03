@@ -21,6 +21,8 @@ D. The system predicts where an incoming missle will appear based on its
    velocity and the time of the last radar detection. Given that a Scud travels
    at around 2,000 meters per second, how far off was its prediction?
 
+Reference: binary representation of 1/10 is 0.00011 [0011] ...
+
 Answer:
 
 A. Since the binary representation of 1/10 is the nonterminating sequence
