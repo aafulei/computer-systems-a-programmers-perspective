@@ -1,0 +1,39 @@
+21/07/03 = Sat
+
+Practice Problem 2.51
+
+We saw in Problem 2.46 that the missile software approximated 0.1 as
+
+  x = 0.00011001100110011001100
+
+Suppose instead that they had used IEEE round-to-even mode to determine an
+approximation x' to 0.1 with 23 bits to the right of the binary point.
+
+A. What is the binary representation of x'?
+
+B. What is the approximate decimal value of x' - 0.1?
+
+C. How far off would the computed clock have been after 100 hours of operation?
+
+D. How far off would the program's prdiction of the position of the Scud missle
+   have been?
+
+Answer:
+
+A. With x = 0.0 0011 0011 0011 0011 0011 00 [1100]..., we have
+
+        x'= 0.0 0011 0011 0011 0011 0011 01
+
+B.    x' - 0.1
+
+    = 0.00011001100110011001101 - 0.00011001100110011001100[1100]...
+
+    = 0.00000000000000000000000[0011] ...
+
+    which is roughly 1.5 * 2^(-26) * 1 / (1 - 2^(-4)) ~= 2.38e-08.
+
+C. 2.38e-08 * 3.6e6 ~= 0.0857s = 85.7ms
+
+D. 0.857 * 2000 = 171.4 ~= 171 meters.
+
+(See solution to 2.46 for steps in detail.)
