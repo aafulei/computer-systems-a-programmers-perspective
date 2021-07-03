@@ -1,0 +1,19 @@
+21/07/03 = Sat
+
+Practice Problem 2.49
+
+A. For a floating-point format with an n-bit fraction, give a formula for the
+   smallest positive integer that cannot be represented exactly (because it
+   would require an (n+1)-bit fraction to be exact). Assume the exponent field
+   size k is large enough that the range of representable exponents does not
+   provide a limitation for this problem.
+
+B. What is the numeric value of this integer for single-precision format
+   (n = 23)?
+
+Answer:
+
+A. Let's say 4-bit fraction. The smallest positive integer would be 10 0001 (6
+   bits because the leading 1 does not count), which is 2 ^ (n + 1) + 1.
+
+B. 2 ^ (23 + 1) + 1 = 16,777,217
