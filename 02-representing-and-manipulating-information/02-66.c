@@ -96,8 +96,6 @@ void test(unsigned x)
   printf("rightmost_one(0x%08x) = 0x%08x\n", x, rightmost_one(x));
 }
 
-
-
 int main()
 {
   test(0x0);
