@@ -1,6 +1,6 @@
 // 21/07/05 = Mon
 
-/* Practice Problem 2.62 (***)
+/* Homework Problem 2.62 (***)
 
 Write a function int_shifts_are_arithmetic() that yields 1 when run on a
 machine that uses arithmetic right shifts for data type int and yields 0
