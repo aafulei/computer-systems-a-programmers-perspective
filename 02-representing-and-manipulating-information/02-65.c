@@ -14,6 +14,40 @@ may assume that data type int has w = 32 bits.
 Your code should contain a total of at most 12 arithmetic, bitwise and logical
 operations. */
 
+/* ------------------------------
+   Bit-Level Integer Coding Rules
+   ------------------------------
+
+  - Assumptions
+
+    - two's-complement form
+
+    - right shifts performed arithmetically
+
+    - int is w bits long (use sizeof(int) << 3 to compute w)
+
+  - Forbidden
+
+    - conditionals, loops, switch, function calls, and macro invocations
+
+    - division, modulus, and multiplication
+
+    - relative comparisons (<, >, <=, and >=)
+
+  - Allowed
+
+    - all bit-level and logic operations
+
+    - left and right shifts, with amounts between 0 and w - 1
+
+    - addition and subtraction
+
+    - equality (==) and inequality (!=) (some problems do not allow these)
+
+    - INT_MIN and INT_MAX
+
+    - casting between int and unsigned */
+
 // ----------
 // Sample Run
 // ----------
