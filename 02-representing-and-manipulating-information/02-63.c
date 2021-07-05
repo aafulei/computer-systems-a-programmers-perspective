@@ -1,6 +1,6 @@
 // 21/07/05 = Mon
 
-/* Practice Problem 2.63
+/* Practice Problem 2.63 (***)
 
 Fill in code for the following C functions. Function srl performs a logical
 right shift using an arithmetic right shift (given by value xsra), followed by
