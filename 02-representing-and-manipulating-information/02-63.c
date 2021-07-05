@@ -4,7 +4,7 @@
 
 Fill in code for the following C functions. Function srl performs a logical
 right shift using an arithmetic right shift (given by value xsra), followed by
-other operations not including right shifts or division. funciton sra performs
+other operations not including right shifts or division. Funciton sra performs
 an arithmetic right shift using a logical right shift (given by value xsrl),
 followed by other operations not including right shifts or division. You may
 use the computation 8 * sizeof(int) to determine w, the number of bits in data
@@ -58,21 +58,52 @@ int sra(int x, int k)
 
     - casting between int and unsigned */
 
+// ----------
+// Sample Run
+// ----------
+// srl(0x000000ff,  3) = 0x0000001f
+// srl(0xff000000,  3) = 0x1fe00000
+// srl(0xffffffff, 30) = 0x00000003
+// srl(0xffffffff, 31) = 0x00000001
+// sra(0x7f000000,  3) = 0x0fe00000
+// sra(0xff000000,  3) = 0xffe00000
+// sra(0x70000000, 30) = 0x00000001
+// sra(0x80000000, 30) = 0xfffffffe
+// sra(0x70000000, 31) = 0x00000000
+// sra(0x80000000, 31) = 0xffffffff
+
 #include <stdio.h>
 
 unsigned srl(unsigned x, int k)
 {
   // Perform shift arithmetically
   unsigned xsra = (int)x >> k;
+  return xsra & ~(((1ULL << (k + 1)) - 1) << ((sizeof(int) << 3) - k));
 }
 
 int sra(int x, int k)
 {
   // Perform shift logically
   int xsrl = (unsigned)x >> k;
+
+  unsigned long long neg = !!(x & (1 << ((sizeof(int) << 3) - 1)));
+
+  return xsrl | (((neg << (k + 1)) - neg) << ((sizeof(int) << 3) - k));
+
+  return 0;
 }
 
 int main()
 {
+  printf("srl(0x000000ff,  3) = 0x%08x\n", srl(0xff, 3));
+  printf("srl(0xff000000,  3) = 0x%08x\n", srl(0xff000000, 3));
+  printf("srl(0xffffffff, 30) = 0x%08x\n", srl(0xffffffff, 30));
+  printf("srl(0xffffffff, 31) = 0x%08x\n", srl(0xffffffff, 31));
+  printf("sra(0x7f000000,  3) = 0x%08x\n", sra(0x7f000000, 3));
+  printf("sra(0xff000000,  3) = 0x%08x\n", sra(0xff000000, 3));
+  printf("sra(0x70000000, 30) = 0x%08x\n", sra(0x70000000, 30));
+  printf("sra(0x80000000, 30) = 0x%08x\n", sra(0x80000000, 30));
+  printf("sra(0x70000000, 31) = 0x%08x\n", sra(0x70000000, 31));
+  printf("sra(0x80000000, 31) = 0x%08x\n", sra(0x80000000, 31));
   return 0;
 }
