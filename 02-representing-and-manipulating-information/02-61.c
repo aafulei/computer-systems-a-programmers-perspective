@@ -1,3 +1,16 @@
+/* Practice Problem 2.61
+
+  Write C expressions that evaluate to 1 when the following conditions are true
+  and to 0 when they are false. Assume x is of type int.
+
+  A. Any bit of x equals 1.
+
+  B. Any bit of x equals 0.
+
+  C. Any bit in the least significant byte of x equals 1.
+
+  D. Any bit in the most significant byte of x equals 1. */
+
 /* ------------------------------
    Bit-Level Integer Coding Rules
    ------------------------------
@@ -31,19 +44,6 @@
     - INT_MIN and INT_MAX
 
     - casting between int and unsigned */
-
-/* Practice Problem 2.61
-
-  Write C expressions that evaluate to 1 when the following conditions are true
-  and to 0 when they are false. Assume x is of type int.
-
-  A. Any bit of x equals 1.
-
-  B. Any bit of x equals 0.
-
-  C. Any bit in the least significant byte of x equals 1.
-
-  D. Any bit in the most significant byte of x equals 1. */
 
 // ----------
 // Sample Run
