@@ -5,7 +5,7 @@ My solutions to the problems in the book "Computer Systems: A Programmer's Persp
 3. Machine-Level Representation of Programs (0/75)
 4. Processor Architecture (0/59)
 5. Optimizing Program Performance (0/19)
-6. The Memory Hierarch (0/46)
+6. The Memory Hierarchy (0/46)
 7. Linking (0/13)
 8. Exceptional Control Flow (0/26)
 9. Virtual Memory (0/20)
