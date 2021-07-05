@@ -1,0 +1,12 @@
+Stars
+-----
+
+*     Should require just a few minutes. Little or no programming required.
+
+**    Might require up to 20 minutes. Often involves writing and testing some
+      code. (Many of these are derived from problems we have given on exams.)
+
+***   Requires a sigficant effort, perhaps 1-2 hours. Generally involves
+      writing and testing a significant amount of code.
+
+****  A lab assignment, requiring up to 10 hours of effort.
