@@ -1,6 +1,6 @@
 // 21/07/05 = Mon
 
-/* Practice Problem 2.61 (**)
+/* Homework Problem 2.61 (**)
 
   Write C expressions that evaluate to 1 when the following conditions are true
   and to 0 when they are false. Assume x is of type int.
