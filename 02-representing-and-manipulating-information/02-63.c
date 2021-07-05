@@ -78,19 +78,21 @@ unsigned srl(unsigned x, int k)
 {
   // Perform shift arithmetically
   unsigned xsra = (int)x >> k;
-  return xsra & ~(((1ULL << (k + 1)) - 1) << ((sizeof(int) << 3) - k));
+  unsigned w = sizeof(int) << 3;
+  unsigned mask = (2 << k) - 1;
+  mask <<= w - k;
+  return xsra &= ~mask;
 }
 
 int sra(int x, int k)
 {
   // Perform shift logically
   int xsrl = (unsigned)x >> k;
-
-  unsigned long long neg = !!(x & (1 << ((sizeof(int) << 3) - 1)));
-
-  return xsrl | (((neg << (k + 1)) - neg) << ((sizeof(int) << 3) - k));
-
-  return 0;
+  unsigned w = sizeof(int) << 3;
+  int is_neg = !!(x & (1 << (w - 1)));
+  int mask = ((is_neg + 1) << k) - is_neg;
+  mask <<= w - k;
+  return xsrl |= mask;
 }
 
 int main()
