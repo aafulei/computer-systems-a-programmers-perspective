@@ -51,8 +51,8 @@ void copy_int(int val, void *buf, int maxbytes)
 int main()
 {
   int a = 42;
-  copy_int(12, &a, 4);  // copied
-  copy_int(34, &a, 3);  // not copied (space not enough)
+  copy_int(12, &a, 4); // copied
+  copy_int(34, &a, 3); // not copied (space not enough)
   printf("%d\n", a);
   return 0;
 }
