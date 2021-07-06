@@ -28,7 +28,7 @@
 
 // Answer: A. The sign bit is not extended properly, as word is an unsigned.
 //
-//         B. See code below.
+//         B. See the code below.
 
 // ----------
 // Sample Run
