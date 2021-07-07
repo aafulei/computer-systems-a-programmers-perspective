@@ -43,7 +43,7 @@ complement representation, and that right shifts are performed arithmetically.
 int div16(int x)
 {
   // signed(|x| / 16) + (bias 1 if x is negative and indivisible by 16)
-  return (x >> 4)     + ((x >> 31) && (x & 0xf));
+  return     (x >> 4) + ((x >> 31) && (x & 0xf));
 }
 
 void test(int x)
