@@ -1,5 +1,3 @@
-// todo
-
 // 21/07/07 = Wed
 
 /* Homework Problem 2.75 (***)
@@ -29,12 +27,37 @@ unsigned product x' * y' in the derivation of Equation 2.18. */
 // Let x' = x + x_{w-1} 2^w, and y' = y + y_{w-1} 2^w. We have
 //   (x' * y') mod 2^w
 // = [(x + x_{w-1} 2^w) * (y + y_{w-1} 2^w)] mod 2^w
-// = [x * y + (x_{w-1} + y_{w-1}) 2^w + x_{w-1} y_{w-1} 2^{2w}] mod 2^w
+// = [x * y + (x_{w-1} * y + y_{w-1} * x) 2^w + x_{w-1} y_{w-1} 2^{2w}] mod 2^w
 // = (x * y) mod 2^w
 //
 // Reference - Equation 2.6
 // T2U_w(x) = x + x_{w-1} 2^w
 
+// Answer: From Equation 2.18, we can tell that for the high-order bits
+//
+//           (x' * y') / 2^w
+//         = [(x + x_{w-1} 2^w) * (y + y_{w-1} 2^w)] / 2^w
+//         = (x * y) / 2^w + (x_{w-1} * y + y_{w-1} * x) + x_{w-1} y_{w-1} * 2^w
+//
+//         Therefore, the difference between a signed product and an unsigned
+//         product is (x_{w-1} * y + y_{w-1} * x) + x_{w-1} y_{w-1} * 2^w.
+//
+//         If we confine the above difference within w bits, that's
+//
+//                (x_{w-1} * y + y_{w-1} * x)
+
+// gcc 02-75.c&& ./a.out 2>/dev/null
+// ----------
+// Sample Run
+// ----------
+// 128 * 128 = 0x0000000000004000 = [00000000 | 00004000]
+// 128 * 4294967168 = 0x0000007fffffc000 = [0000007f | ffffc000]
+// 4294967168 * 4294967168 = 0xffffff0000004000 = [ffffff00 | 00004000]
+// 4294957093 * 476859 = 0x000746b9de000107 = [000746b9 | de000107]
+// 2147483648 * 2147483647 = 0x3fffffff80000000 = [3fffffff | 80000000]
+// 4294967295 * 4294967295 = 0xfffffffe00000001 = [fffffffe | 00000001]
+
+#include <limits.h>
 #include <stdio.h>
 
 static int signed_high_prod(int x, int y)
@@ -46,29 +69,28 @@ static int signed_high_prod(int x, int y)
 unsigned unsigned_high_prod(unsigned x, unsigned y)
 {
   unsigned v = (sizeof(int) << 3) - 1;
-  unsigned xsb = x >> v;
-  unsigned ysb = y >> v;
-  return signed_high_prod(x, y) + (xsb ^ ysb) << v;
+  unsigned s = signed_high_prod(x, y);
+  unsigned c1 = (((int)x >> v) & y);
+  unsigned c2 = (((int)y >> v) & x);
+  fprintf(stderr, "(debug)  s = 0x%08x\n", s);
+  fprintf(stderr, "(debug) c1 = 0x%08x\n", c1);
+  fprintf(stderr, "(debug) c2 = 0x%08x\n", c2);
+  return s + c1 + c2;
 }
 
 void test(unsigned x, unsigned y)
 {
   unsigned z = unsigned_high_prod(x, y);
-  unsigned long prod = (unsigned long)x * y;
-  printf("unsigned_high_prod(%d=0x%08x, %d=0x%08x) = (%d=0x%08x), "
-         "while %d * %d = (%ld=0x%016lx), ",
-         x, x, y, y, z, z, x, y, prod, prod);
+  printf("%u * %u = 0x%016lx = [%08x | %08x]\n", x, y, (unsigned long)x * y, z, x * y);
 }
 
 int main()
 {
   test(128, 128);
   test(128, -128);
-  test(-128, 128);
   test(-128, -128);
-  test(0x00010000, 0x00010000);
-  test(0x00010000, 0x10010000);
-  test(0x10010000, 0x00010000);
-  test(0x10010000, 0x10010000);
+  test(-10203, 476859);
+  test(INT_MIN, INT_MAX);
+  test(-1, -1);
   return 0;
 }
