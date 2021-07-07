@@ -37,7 +37,7 @@ unsigned product x' * y' in the derivation of Equation 2.18. */
 //
 //           (x' * y') / 2^w
 //         = [(x + x_{w-1} 2^w) * (y + y_{w-1} 2^w)] / 2^w
-//         = (x * y) / 2^w + (x_{w-1} * y + y_{w-1} * x) + x_{w-1} y_{w-1} * 2^w
+//         = (x*y) / 2^w + (x_{w-1} * y + y_{w-1} * x) + x_{w-1} y_{w-1} * 2^w
 //
 //         Therefore, the difference between a signed product and an unsigned
 //         product is (x_{w-1} * y + y_{w-1} * x) + x_{w-1} y_{w-1} * 2^w.
@@ -50,12 +50,12 @@ unsigned product x' * y' in the derivation of Equation 2.18. */
 // ----------
 // Sample Run
 // ----------
-// 128 * 128 = 0x0000000000004000 = [00000000 | 00004000]
-// 128 * 4294967168 = 0x0000007fffffc000 = [0000007f | ffffc000]
-// 4294967168 * 4294967168 = 0xffffff0000004000 = [ffffff00 | 00004000]
-// 4294957093 * 476859 = 0x000746b9de000107 = [000746b9 | de000107]
-// 2147483648 * 2147483647 = 0x3fffffff80000000 = [3fffffff | 80000000]
-// 4294967295 * 4294967295 = 0xfffffffe00000001 = [fffffffe | 00000001]
+//        128 *        128 = 0x0000000000004000 = [00000000|00004000]
+//        128 * 4294967168 = 0x0000007fffffc000 = [0000007f|ffffc000]
+// 4294967168 * 4294967168 = 0xffffff0000004000 = [ffffff00|00004000]
+// 4294957093 *     476859 = 0x000746b9de000107 = [000746b9|de000107]
+// 2147483648 * 2147483647 = 0x3fffffff80000000 = [3fffffff|80000000]
+// 4294967295 * 4294967295 = 0xfffffffe00000001 = [fffffffe|00000001]
 
 #include <limits.h>
 #include <stdio.h>
@@ -81,7 +81,8 @@ unsigned unsigned_high_prod(unsigned x, unsigned y)
 void test(unsigned x, unsigned y)
 {
   unsigned z = unsigned_high_prod(x, y);
-  printf("%u * %u = 0x%016lx = [%08x | %08x]\n", x, y, (unsigned long)x * y, z, x * y);
+  printf("%10u * %10u = 0x%016lx = [%08x|%08x]\n", x, y, (unsigned long)x * y,
+         z, x * y);
 }
 
 int main()
