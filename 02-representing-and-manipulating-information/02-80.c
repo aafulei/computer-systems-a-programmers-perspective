@@ -1,6 +1,6 @@
 // 21/07/08 = Thu
 
-/* Homework Problem 2.80 (**)
+/* Homework Problem 2.80 (***)
 
 Write code for a function threefourths that, for integer argument x, computes
 the value of 3/4 x, rounded towards zero. It should not overflow. Your function
