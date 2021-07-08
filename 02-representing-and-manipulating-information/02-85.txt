@@ -59,4 +59,4 @@ C. The smallest positive normalized has 0 as the sign bit, [0...01] (k-1 bits
 
       e = 2^k - 3.
 
-   Thus, the bits should be [ 0 | 11...100 | 0..0 ].
+   Thus, the bits should be [ 0 | 11...101 | 0..0 ].
