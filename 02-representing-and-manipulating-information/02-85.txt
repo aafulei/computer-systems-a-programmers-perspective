@@ -1,0 +1,62 @@
+s21/07/08 = Thu
+
+Homework Problem 2.85 (*)
+
+Given a floating-point format with a k-bit exponent and an n-bit fraction,
+write formulas for the expoenent E, the significand M, the fraction f, and the
+value V for the quantities that follow. In addition, describe the bit
+representation
+
+A. The number 7.0
+
+B. The largest odd integer that can be represented exactly
+
+C. The reciprocal of the smallest positive normalized value
+
+Answer: Bias = 2^{k-1} - 1.
+
+        For normalized cases,
+
+          E = e - Bias = e - Bias = e - 2^{k-1} + 1, where e in [1, 2^k - 2],
+
+          M = f + 1, and
+
+          V = 2^E * M.
+
+        For denormalized cases,
+
+          E = 1 - Bias = 1 - (2^{k-1} - 1) = 2 - 2^{k-1},
+
+          M = f, and
+
+          V = 2^E * M.
+
+A. Sign bit is 0. To express 7 in the range of [1, 2), note that 7 = 4 * 1.75.
+
+   The bits are [ 0 | 10...01 | 110...0 ].
+
+   That is, E = 2, f = 3/4, M = 7/4, V = 2^E * M = 7.0.
+
+B. Sign bit is 0. Let m be the smaller of n and k. Then the fraction part
+   should be m bits of 1s with possible 0s that follow them. Thus,
+
+     M = f + 1 = 2 - 1 / 2^m.
+
+   The expoenent value should be E = 2^m. Thus e = 2^m + 2^{k-1} - 1.
+
+   V =  2^E * M = 2^{2^m} * (2 - 1 / 2^m) = 2^{2^m + 1} - 1, where m = min(n,k)
+
+C. The smallest positive normalized has 0 as the sign bit, [0...01] (k-1 bits
+   of 1s, followed by a 1) as the expoenent bits (e = 1), and [0...0] (n bits
+   of 0s) as the fraction bits (f = 0).
+
+   Mathematically, the value is 2^{2 - 2^{k-1}}.
+
+   If k = 4, this value is 2^{-6} = 1/64.
+
+   Now the reciprocal, 2^{2^{k-1} - 2}, should have M = 1, f = 0, and
+   E = 2^{k-1} - 2. Since E = e - 2^{k-1} + 1, we back out
+
+      e = 2^k - 3.
+
+   Thus, the bits should be [ 0 | 11...100 | 0..0 ].
