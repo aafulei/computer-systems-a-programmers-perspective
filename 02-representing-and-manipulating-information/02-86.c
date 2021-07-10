@@ -24,54 +24,53 @@ to generate code based on the legacy 8087 floating-point instructions. The
 resulting program will most likely run much slower than would be the case for
 data type float or double.
 
-Answer:
-
-
-                                  Extended precision
-                                  ----------------------------------
-Description                       Value              Decimal
---------------------------------------------------------------------
-Smallest positive denormalized    2^(-16445)          3.6452e-4951
-Smallest positive normalized      2^(-16382)          3.3621e-4932
-Largest normalized                2^16384 - 2^16320   1.18973e+4932
-
-Steps:
-
-Smallest positive denormalized
-------------------------------
-[ 0 | 0...0 | 0 | 0...1 ]
-
-Bias = 2^{k-1} - 1 = 2^14 - 1
-
-E = 1 - Bias = 1 - ((2^14) - 1) = 2 - 16834 = -16382
-
-Exponent = 2^E = 2^(-16382)
-
-Value = Exponent * M = 2^(-16382) * 1 * 2^(-63) = 2^(-16445)
-
-Smallest positive normalized
-----------------------------
-[ 0 | 0...1 | 1 | 0...0 ]
-
-E = e - Bias = 1 - Bias = -16382
-
-Exponent = 2^E = 2^(-16382)
-
-Value = Exponent * M = 2^(-16382) * 1 = 2^(-16382)
-
-Largest normalized
-------------------
-[ 0 | 1...10 | 1 | 1...1 ]
-
-E = e - Bias = (2^15 - 2) - (2^14 - 1) = 2^14 - 1 = 16383
-
-Exponent = 2^E = 2^16383
-
-Value = Exponent * M = 2^(16383) * 1 * ((1 - (1/2)^64) / (1 - 1/2))
-      = 2^(16383) * (2 - 2^(-63))
-      = 2^16384 - 2^16320
-
 */
+
+// Answer:
+//
+//                                   Extended precision
+//                                   ----------------------------------
+// Description                       Value              Decimal
+// --------------------------------------------------------------------
+// Smallest positive denormalized    2^(-16445)          3.6452e-4951
+// Smallest positive normalized      2^(-16382)          3.3621e-4932
+// Largest normalized                2^16384 - 2^16320   1.18973e+4932
+
+// Steps:
+//
+// Smallest positive denormalized
+// ------------------------------
+// [ 0 | 0...0 | 0 | 0...1 ]
+//
+// Bias = 2^{k-1} - 1 = 2^14 - 1
+//
+// E = 1 - Bias = 1 - ((2^14) - 1) = 2 - 16834 = -16382
+//
+// Exponent = 2^E = 2^(-16382)
+//
+// Value = Exponent * M = 2^(-16382) * 1 * 2^(-63) = 2^(-16445)
+//
+// Smallest positive normalized
+// ----------------------------
+// [ 0 | 0...1 | 1 | 0...0 ]
+//
+// E = e - Bias = 1 - Bias = -16382
+//
+// Exponent = 2^E = 2^(-16382)
+//
+// Value = Exponent * M = 2^(-16382) * 1 = 2^(-16382)
+//
+// Largest normalized
+// ------------------
+// [ 0 | 1...10 | 1 | 1...1 ]
+//
+// E = e - Bias = (2^15 - 2) - (2^14 - 1) = 2^14 - 1 = 16383
+//
+// Exponent = 2^E = 2^16383
+//
+// Value = Exponent * M = 2^(16383) * 1 * ((1 - (1/2)^64) / (1 - 1/2))
+//       = 2^(16383) * (2 - 2^(-63))
+//       = 2^16384 - 2^16320
 
 // compile on a little-endian, intel machine (macbook pro 16" 2019 intel i9)
 
