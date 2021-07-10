@@ -97,10 +97,8 @@ void repr(void *x)
 int main()
 {
   char fake[10];
-  for (int i = 0; i != 10; ++i)
-    fake[i] = 0x00;
-
   // [ 0 | 0...0 | 0 | 0...1 ]
+  memset(fake, 0, 10);
   fake[0] = 0x01;
   printf("Smallest positive denormalized = ");
   repr(fake);
