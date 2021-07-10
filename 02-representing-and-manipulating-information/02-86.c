@@ -111,8 +111,7 @@ int main()
   printf("Smallest positive normalized   = ");
   repr(fake);
   // [ 0 | 1..10 | 1 | 1...1 ]
-  for (int i = 0; i != 10; ++i)
-    fake[i] = 0xff;
+  memset(fake, 0xff, 10);
   fake[8] = 0xfe;
   fake[9] = 0x7f;
   printf("Largest normalized             = ");
