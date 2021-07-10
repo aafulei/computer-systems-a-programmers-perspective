@@ -1,0 +1,34 @@
+21/07/10 = Sat
+
+Homework Problem 2.87 (*)
+
+The 2008 version of the IEEE floating-point standard, named IEEE 754-2008,
+includes a 16-bit "half-precision" floating-point format. It was originally
+devised by computer graphics companeis for storing data in which a higher
+dynamic range is required than can be achieved with 16-bit integers. This
+format has 1 sign bit, 5 exponent bits (k = 5), and 10 fraction bits (n = 10).
+The exponent bias is 2^(5-1) - 1 = 15.
+
+Fill in the table that follows for each of the numbers given ...
+
+You need not fill in entries marked ---.
+
+Description           Hex         M           E           V             D
+-------------------------------------------------------------------------------
+-0                                                        -0          -0.0
+Smallest value > 2
+512
+Largest denormalized
+-inf                             ---         ---          -inf        -inf
+3BB9                  3BB0
+
+Answer:
+
+Description           Hex         M           E           V             D
+-------------------------------------------------------------------------------
+-0                    8000        0          -14          -0          -0.0
+Smallest value > 2    4001    1025/1024       1    1025/1024 * 2^1     2.001953
+512                   6000        1           9            1 * 2^9   512
+Largest denormalized  03ff    2047/1024      -14   2047/1024 * 2^-14   0.000122
+-inf                  fc00       ---         ---          -inf        -inf
+3BB9                  3BB0     123/64        -1     123/64   * 2^-1    0.960938
