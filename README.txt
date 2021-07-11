@@ -1,7 +1,7 @@
 My solutions to the problems in the book "Computer Systems: A Programmer's Perspective, 3rd Edition" (2016) by Randal E. Bryant and David R. O'Hallaron.
 
 1. A Tour of Computer Systems (0/2)
-2. Representing and Manipulating Information (96/97)
+2. Representing and Manipulating Information (97/97)
 3. Machine-Level Representation of Programs (0/75)
 4. Processor Architecture (0/59)
 5. Optimizing Program Performance (0/19)
