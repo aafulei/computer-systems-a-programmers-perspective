@@ -71,15 +71,15 @@ void exhaustive_test()
   unsigned f = 0;
   do {
     float_bits n = float_negate(f);
-    float value = as_float(f);
-    if (isnan(value)) {
+    float result = -as_float(f);
+    if (isnan(result)) {
       if (f != n) {
         printf("Exhaustive test failed with float_bits 0x%08x!\n", f);
         return;
       }
     }
     else {
-      if (as_float(n) != -value) {
+      if (as_float(n) != result) {
         printf("Exhaustive test failed with float_bits 0x%08x!\n", f);
         return;
       }
