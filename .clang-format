@@ -124,7 +124,7 @@ BraceWrapping:
         BeforeCatch:                            true
         BeforeElse:                             true
         BeforeLambdaBody:                       false
-        BeforeWhile:                            true
+        BeforeWhile:                            false
         IndentBraces:                           false
         SplitEmptyFunction:                     true
         SplitEmptyNamespace:                    true
