@@ -20,17 +20,17 @@ point operations. */
 // ----------
 // float_twice(0x00000000) = 0x00000000:
 //   as_float(0x00000000)       = 0, while
-//   as_float(0x00000000) * 2.0 = 0
+//   as_float(0x00000000) * 2.f = 0
 // float_twice(0x00000001) = 0x00000002:
 //   as_float(0x00000002)       = 2.8026e-45, while
-//   as_float(0x00000001) * 2.0 = 2.8026e-45
+//   as_float(0x00000001) * 2.f = 2.8026e-45
 // float_twice(0xffffffff) = 0xffffffff:
 //   as_float(0xffffffff)       = nan, while
-//   as_float(0xffffffff) * 2.0 = nan
+//   as_float(0xffffffff) * 2.f = nan
 // float_twice(0x00bc614e) = 0x013c614e:
 //   as_float(0x013c614e)       = 3.46e-38, while
-//   as_float(0x00bc614e) * 2.0 = 3.46e-38
-// Exhaustive test passed with 4294967296 tests in 34.9 seconds!
+//   as_float(0x00bc614e) * 2.f = 3.46e-38
+// Exhaustive test passed with 4294967296 tests in 34.8 seconds!
 
 #include <math.h>
 #include <stdio.h>
@@ -74,8 +74,8 @@ void test(float_bits f)
   float_bits t = float_twice(f);
   printf("float_twice(0x%08x) = 0x%08x:\n"
          "\tas_float(0x%08x)       = %g, while\n"
-         "\tas_float(0x%08x) * 2.0 = %g\n",
-         f, t, t, as_float(t), f, as_float(f) * 2.0);
+         "\tas_float(0x%08x) * 2.f = %g\n",
+         f, t, t, as_float(t), f, as_float(f) * 2.f);
 }
 
 void exhaustive_test()
@@ -85,7 +85,7 @@ void exhaustive_test()
   unsigned f = 0;
   do {
     float_bits t = float_twice(f);
-    float result = as_float(f) * 2.0;
+    float result = as_float(f) * 2.f;
     if (isnan(result)) {
       if (f != t) {
         printf("Exhaustive test failed with float_bits 0x%08x!\n", f);
